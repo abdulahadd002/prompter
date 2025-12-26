@@ -1,0 +1,85 @@
+.textarea-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 0.625rem;
+}
+
+.textarea-label {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--color-text);
+  letter-spacing: 0.025em;
+}
+
+.textarea-required {
+  color: var(--color-error);
+  margin-left: 0.25rem;
+}
+
+.textarea {
+  padding: 0.875rem 1.25rem;
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius-lg);
+  font-size: 1rem;
+  font-family: var(--font-sans);
+  background: var(--glass-bg);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  color: var(--color-text);
+  resize: vertical;
+  min-height: 120px;
+  transition: all var(--transition-normal);
+  line-height: 1.6;
+}
+
+.textarea::placeholder {
+  color: var(--color-text-muted);
+}
+
+.textarea:hover:not(:disabled):not(:focus) {
+  border-color: rgba(255, 255, 255, 0.2);
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.textarea:focus {
+  outline: none;
+  border-color: var(--color-primary);
+  background: rgba(99, 102, 241, 0.05);
+  box-shadow:
+    0 0 0 3px var(--color-primary-alpha),
+    var(--glow-primary);
+}
+
+.textarea:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.textarea.textarea-error {
+  border-color: var(--color-error);
+  background: rgba(239, 68, 68, 0.05);
+}
+
+.textarea-helper {
+  font-size: 0.75rem;
+  color: var(--color-text-muted);
+  margin-top: 0.25rem;
+}
+
+.textarea-error-message {
+  font-size: 0.75rem;
+  color: var(--color-error);
+  margin-top: 0.25rem;
+  animation: fadeInUp 0.3s ease;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(-5px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

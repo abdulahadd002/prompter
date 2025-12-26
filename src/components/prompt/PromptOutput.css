@@ -1,0 +1,40 @@
+.prompt-output {
+  border: 1px solid var(--color-border);
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.prompt-output.empty {
+  padding: 3rem;
+  text-align: center;
+  background: var(--color-background);
+}
+
+.prompt-output.empty p {
+  color: var(--color-text-muted);
+  margin: 0;
+}
+
+.output-toolbar {
+  display: flex;
+  gap: 0.5rem;
+  padding: 0.75rem 1rem;
+  background: var(--color-background);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.output-content {
+  padding: 1rem;
+  background: var(--color-code-bg);
+  max-height: 500px;
+  overflow-y: auto;
+}
+
+.output-content pre {
+  margin: 0;
+  white-space: pre-wrap;
+  word-break: break-word;
+  font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
+  font-size: 0.875rem;
+  line-height: 1.6;
+}

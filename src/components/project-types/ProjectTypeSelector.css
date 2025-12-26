@@ -1,0 +1,121 @@
+.project-type-selector {
+  text-align: center;
+  animation: fadeIn 0.5s ease;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.project-type-selector h2 {
+  margin: 0 0 0.75rem 0;
+  font-size: 1.75rem;
+  background: var(--gradient-primary);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.selector-subtitle {
+  color: var(--color-text-secondary);
+  margin: 0 0 2.5rem 0;
+  font-size: 1.0625rem;
+}
+
+.project-type-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.25rem;
+}
+
+.project-type-card {
+  text-align: center;
+  padding: 2.5rem 2rem;
+  position: relative;
+  overflow: hidden;
+  opacity: 0;
+  animation: slideUp 0.5s ease forwards;
+}
+
+.project-type-card:nth-child(1) { animation-delay: 0.1s; }
+.project-type-card:nth-child(2) { animation-delay: 0.2s; }
+.project-type-card:nth-child(3) { animation-delay: 0.3s; }
+.project-type-card:nth-child(4) { animation-delay: 0.4s; }
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Shimmer effect on hover */
+.project-type-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.1),
+    transparent
+  );
+  transition: left 0.6s ease;
+}
+
+.project-type-card:hover::before {
+  left: 100%;
+}
+
+.project-type-icon {
+  font-size: 3rem;
+  display: block;
+  margin-bottom: 1.25rem;
+  transition: transform var(--transition-bounce);
+  filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.2));
+}
+
+.project-type-card:hover .project-type-icon {
+  transform: scale(1.2) rotate(5deg);
+}
+
+.project-type-name {
+  margin: 0 0 0.625rem 0;
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--color-text);
+  transition: color var(--transition-normal);
+}
+
+.project-type-card:hover .project-type-name {
+  color: var(--color-primary-light);
+}
+
+.project-type-description {
+  margin: 0;
+  font-size: 0.9375rem;
+  color: var(--color-text-secondary);
+  line-height: 1.5;
+}
+
+@media (max-width: 640px) {
+  .project-type-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .project-type-card {
+    padding: 2rem 1.5rem;
+  }
+
+  .project-type-icon {
+    font-size: 2.5rem;
+  }
+}

@@ -1,0 +1,107 @@
+.card {
+  position: relative;
+  background: var(--glass-bg);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-radius: var(--radius-xl);
+  padding: 1.75rem;
+  border: 1px solid var(--glass-border);
+  box-shadow: var(--shadow-md);
+  overflow: hidden;
+  transition: all var(--transition-normal);
+}
+
+/* Gradient border effect */
+.card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  border-radius: inherit;
+  padding: 1px;
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.1),
+    transparent,
+    rgba(255, 255, 255, 0.05)
+  );
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity var(--transition-normal);
+}
+
+.card-hoverable {
+  cursor: pointer;
+}
+
+.card-hoverable:hover {
+  transform: translateY(-8px) scale(1.02);
+  box-shadow: var(--shadow-xl), var(--glow-primary);
+  border-color: rgba(99, 102, 241, 0.3);
+}
+
+.card-hoverable:hover::before {
+  opacity: 1;
+}
+
+.card-hoverable:active {
+  transform: translateY(-4px) scale(1.01);
+}
+
+/* Inner glow on hover */
+.card-hoverable::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(
+    circle at center,
+    rgba(99, 102, 241, 0.1) 0%,
+    transparent 70%
+  );
+  transform: translate(-50%, -50%) scale(0);
+  transition: transform var(--transition-slow);
+  pointer-events: none;
+}
+
+.card-hoverable:hover::after {
+  transform: translate(-50%, -50%) scale(1.5);
+}
+
+.card-title {
+  position: relative;
+  margin: 0 0 1rem 0;
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--color-text);
+  z-index: 1;
+}
+
+.card-content {
+  position: relative;
+  color: var(--color-text-secondary);
+  z-index: 1;
+  line-height: 1.6;
+}
+
+/* Card Variants */
+.card-gradient {
+  background: linear-gradient(
+    135deg,
+    rgba(99, 102, 241, 0.1) 0%,
+    rgba(240, 147, 251, 0.05) 100%
+  );
+}
+
+.card-elevated {
+  background: var(--color-surface-elevated);
+  box-shadow: var(--shadow-lg);
+}

@@ -1,0 +1,28 @@
+.builder-page {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 2rem;
+  animation: fadeIn 0.5s ease;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.builder-page h1 {
+  text-align: center;
+  margin: 0 0 0.75rem 0;
+  font-size: 2.25rem;
+  background: var(--gradient-primary);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.builder-description {
+  text-align: center;
+  color: var(--color-text-secondary);
+  margin: 0 0 2.5rem 0;
+  font-size: 1.0625rem;
+}
