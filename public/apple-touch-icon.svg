@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 180 180">
+  <defs>
+    <linearGradient id="grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#667eea"/>
+      <stop offset="50%" style="stop-color:#764ba2"/>
+      <stop offset="100%" style="stop-color:#f093fb"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Background with rounded corners for iOS -->
+  <rect width="180" height="180" rx="40" fill="url(#grad)"/>
+
+  <!-- Stylized P letter - scaled up -->
+  <path d="M55 40 L55 140 L75 140 L75 105 L110 105 C135 105 150 88 150 72 C150 56 135 40 110 40 L55 40 Z M75 60 L105 60 C120 60 130 66 130 72 C130 78 120 85 105 85 L75 85 L75 60 Z"
+        fill="white"
+        opacity="0.95"/>
+
+  <!-- Accent sparks -->
+  <circle cx="140" cy="48" r="8" fill="white" opacity="0.8"/>
+  <circle cx="148" cy="40" r="4" fill="white" opacity="0.6"/>
+</svg>
