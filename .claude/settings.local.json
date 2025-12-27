@@ -1,0 +1,12 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(del /q \"src\\\\components\\\\layout\\\\Sidebar.jsx\" \"src\\\\components\\\\layout\\\\Sidebar.css\" \"src\\\\components\\\\prompt\\\\PromptOutput.jsx\" \"src\\\\components\\\\prompt\\\\PromptOutput.css\" \"src\\\\hooks\\\\usePromptBuilder.js\")",
+      "Bash(npm install)",
+      "Bash(npm run lint)",
+      "Bash(npm install:*)",
+      "Bash(npm run test:*)",
+      "Bash(npm run build:*)"
+    ]
+  }
+}

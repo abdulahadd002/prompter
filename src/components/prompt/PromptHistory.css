@@ -45,6 +45,18 @@
   color: var(--color-text-muted);
 }
 
+.updated-label {
+  color: var(--color-primary-light);
+  font-style: italic;
+}
+
+.history-name {
+  font-size: 1.125rem;
+  font-weight: 600;
+  color: var(--color-text);
+  margin: 0 0 0.5rem 0;
+}
+
 .history-preview {
   font-size: 0.875rem;
   color: var(--color-text-secondary);
@@ -58,5 +70,16 @@
 
 .history-actions {
   display: flex;
+  flex-wrap: wrap;
   gap: 0.5rem;
+}
+
+@media (max-width: 480px) {
+  .history-actions {
+    flex-direction: column;
+  }
+
+  .history-actions .btn {
+    width: 100%;
+  }
 }

@@ -1,4 +1,5 @@
 import { createContext, useContext, useReducer, useEffect } from 'react';
+import PropTypes from 'prop-types';
 
 const PromptContext = createContext(null);
 
@@ -7,7 +8,8 @@ const STORAGE_KEY = 'prompter-history';
 const initialState = {
   projectType: null,
   formData: {},
-  history: []
+  history: [],
+  editingId: null
 };
 
 function loadHistoryFromStorage() {
@@ -47,7 +49,22 @@ function promptReducer(state, action) {
       saveHistoryToStorage(newHistory);
       return {
         ...state,
-        history: newHistory
+        history: newHistory,
+        editingId: null
+      };
+    }
+
+    case 'UPDATE_IN_HISTORY': {
+      const newHistory = state.history.map(item =>
+        item.id === action.payload.id
+          ? { ...action.payload, updatedAt: new Date().toISOString() }
+          : item
+      );
+      saveHistoryToStorage(newHistory);
+      return {
+        ...state,
+        history: newHistory,
+        editingId: null
       };
     }
 
@@ -59,6 +76,25 @@ function promptReducer(state, action) {
         history: newHistory
       };
     }
+
+    case 'EDIT_PROMPT': {
+      const item = state.history.find(h => h.id === action.payload);
+      if (!item) return state;
+      return {
+        ...state,
+        projectType: item.projectType,
+        formData: item.formData,
+        editingId: item.id
+      };
+    }
+
+    case 'CANCEL_EDIT':
+      return {
+        ...state,
+        projectType: null,
+        formData: {},
+        editingId: null
+      };
 
     case 'CLEAR_HISTORY':
       saveHistoryToStorage([]);
@@ -77,7 +113,8 @@ function promptReducer(state, action) {
       return {
         ...state,
         projectType: null,
-        formData: {}
+        formData: {},
+        editingId: null
       };
 
     default:
@@ -99,6 +136,10 @@ export function PromptProvider({ children }) {
     </PromptContext.Provider>
   );
 }
+
+PromptProvider.propTypes = {
+  children: PropTypes.node.isRequired
+};
 
 export function usePrompt() {
   const context = useContext(PromptContext);
