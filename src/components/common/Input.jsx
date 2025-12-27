@@ -23,7 +23,11 @@ export default function Input({
       {label && (
         <label htmlFor={inputId} className="input-label">
           {label}
-          {required && <span className="input-required" aria-hidden="true">*</span>}
+          {required && (
+            <span className="input-required" aria-hidden="true">
+              *
+            </span>
+          )}
         </label>
       )}
       <input
@@ -40,8 +44,16 @@ export default function Input({
         aria-invalid={error ? 'true' : 'false'}
         aria-describedby={error ? `${inputId}-error` : helperText ? `${inputId}-helper` : undefined}
       />
-      {helperText && <span id={`${inputId}-helper`} className="input-helper">{helperText}</span>}
-      {error && <span id={`${inputId}-error`} className="input-error-message" role="alert">{error}</span>}
+      {helperText && (
+        <span id={`${inputId}-helper`} className="input-helper">
+          {helperText}
+        </span>
+      )}
+      {error && (
+        <span id={`${inputId}-error`} className="input-error-message" role="alert">
+          {error}
+        </span>
+      )}
     </div>
   );
 }

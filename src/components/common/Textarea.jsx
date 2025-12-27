@@ -23,7 +23,11 @@ export default function Textarea({
       {label && (
         <label htmlFor={textareaId} className="textarea-label">
           {label}
-          {required && <span className="textarea-required" aria-hidden="true">*</span>}
+          {required && (
+            <span className="textarea-required" aria-hidden="true">
+              *
+            </span>
+          )}
         </label>
       )}
       <textarea
@@ -38,10 +42,20 @@ export default function Textarea({
         rows={rows}
         className={`textarea ${error ? 'textarea-error' : ''}`}
         aria-invalid={error ? 'true' : 'false'}
-        aria-describedby={error ? `${textareaId}-error` : helperText ? `${textareaId}-helper` : undefined}
+        aria-describedby={
+          error ? `${textareaId}-error` : helperText ? `${textareaId}-helper` : undefined
+        }
       />
-      {helperText && <span id={`${textareaId}-helper`} className="textarea-helper">{helperText}</span>}
-      {error && <span id={`${textareaId}-error`} className="textarea-error-message" role="alert">{error}</span>}
+      {helperText && (
+        <span id={`${textareaId}-helper`} className="textarea-helper">
+          {helperText}
+        </span>
+      )}
+      {error && (
+        <span id={`${textareaId}-error`} className="textarea-error-message" role="alert">
+          {error}
+        </span>
+      )}
     </div>
   );
 }

@@ -1,13 +1,7 @@
 import PropTypes from 'prop-types';
 import './Card.css';
 
-export default function Card({
-  children,
-  title,
-  className = '',
-  onClick,
-  hoverable = false
-}) {
+export default function Card({ children, title, className = '', onClick, hoverable = false }) {
   return (
     <div
       className={`card ${hoverable ? 'card-hoverable' : ''} ${className}`}
@@ -17,9 +11,7 @@ export default function Card({
       onKeyDown={onClick ? (e) => e.key === 'Enter' && onClick(e) : undefined}
     >
       {title && <h3 className="card-title">{title}</h3>}
-      <div className="card-content">
-        {children}
-      </div>
+      <div className="card-content">{children}</div>
     </div>
   );
 }

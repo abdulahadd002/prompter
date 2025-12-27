@@ -1,10 +1,5 @@
 import { describe, it, expect, vi, beforeEach, afterEach } from 'vitest';
-import {
-  formatRelativeTime,
-  truncateText,
-  capitalizeFirst,
-  slugify
-} from './formatters';
+import { formatRelativeTime, truncateText, capitalizeFirst, slugify } from './formatters';
 
 describe('truncateText', () => {
   it('returns original text if shorter than maxLength', () => {

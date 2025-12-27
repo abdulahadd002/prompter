@@ -61,9 +61,7 @@ export default function PromptBuilder() {
       </div>
 
       <div className="builder-content">
-        {step === 1 && (
-          <ProjectTypeSelector onSelect={handleProjectTypeSelect} />
-        )}
+        {step === 1 && <ProjectTypeSelector onSelect={handleProjectTypeSelect} />}
 
         {step === 2 && ProjectForm && (
           <div className="form-container">

@@ -32,11 +32,7 @@ class ErrorBoundary extends Component {
             <div className="error-icon">!</div>
             <h2>Something went wrong</h2>
             <p>We apologize for the inconvenience. Please try again.</p>
-            <button
-              className="error-reset-btn"
-              onClick={this.handleReset}
-              type="button"
-            >
+            <button className="error-reset-btn" onClick={this.handleReset} type="button">
               Try Again
             </button>
           </div>

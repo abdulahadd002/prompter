@@ -65,8 +65,8 @@ export default function Home() {
           <span className="hero-title-highlight"> for Your Projects</span>
         </h1>
         <p className="hero-subtitle">
-          Create comprehensive, well-organized prompts for AI assistants
-          based on your project type and requirements
+          Create comprehensive, well-organized prompts for AI assistants based on your project type
+          and requirements
         </p>
         <div className="hero-cta">
           <Link to="/builder">
@@ -87,15 +87,8 @@ export default function Home() {
         </h2>
         <div className="features-grid">
           {FEATURES.map((feature, index) => (
-            <Card
-              key={index}
-              hoverable
-              className={`feature-card stagger-${index + 1}`}
-            >
-              <div
-                className="feature-icon-wrapper"
-                style={{ background: feature.gradient }}
-              >
+            <Card key={index} hoverable className={`feature-card stagger-${index + 1}`}>
+              <div className="feature-icon-wrapper" style={{ background: feature.gradient }}>
                 <span className="feature-icon">{feature.icon}</span>
               </div>
               <h3>{feature.title}</h3>

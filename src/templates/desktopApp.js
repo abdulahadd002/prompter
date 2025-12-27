@@ -1,35 +1,38 @@
 export const desktopAppTemplate = (data) => {
-  const {
-    projectName,
-    platform,
-    framework,
-    description,
-    features,
-    fileTypes,
-    systemIntegration
-  } = data;
+  const { projectName, platform, framework, description, features, fileTypes, systemIntegration } =
+    data;
 
-  const platformLabel = {
-    windows: 'Windows',
-    macos: 'macOS',
-    linux: 'Linux',
-    'cross-platform': 'Cross-Platform (Windows, macOS, Linux)'
-  }[platform] || platform;
+  const platformLabel =
+    {
+      windows: 'Windows',
+      macos: 'macOS',
+      linux: 'Linux',
+      'cross-platform': 'Cross-Platform (Windows, macOS, Linux)'
+    }[platform] || platform;
 
-  const frameworkLabel = {
-    electron: 'Electron',
-    tauri: 'Tauri',
-    qt: 'Qt',
-    wpf: 'WPF (.NET)',
-    swiftui: 'SwiftUI'
-  }[framework] || framework;
+  const frameworkLabel =
+    {
+      electron: 'Electron',
+      tauri: 'Tauri',
+      qt: 'Qt',
+      wpf: 'WPF (.NET)',
+      swiftui: 'SwiftUI'
+    }[framework] || framework;
 
   const featuresList = features
-    ? features.split('\n').filter(f => f.trim()).map(f => `- ${f.trim()}`).join('\n')
+    ? features
+        .split('\n')
+        .filter((f) => f.trim())
+        .map((f) => `- ${f.trim()}`)
+        .join('\n')
     : '';
 
   const integrationList = systemIntegration
-    ? systemIntegration.split('\n').filter(i => i.trim()).map(i => `- ${i.trim()}`).join('\n')
+    ? systemIntegration
+        .split('\n')
+        .filter((i) => i.trim())
+        .map((i) => `- ${i.trim()}`)
+        .join('\n')
     : '';
 
   return `# Desktop Application Development Prompt
@@ -45,9 +48,16 @@ ${description}
 ## Key Features
 ${featuresList || '- Core functionality to be defined'}
 
-${fileTypes ? `## Supported File Types
-${fileTypes.split(',').map(ft => `- ${ft.trim()}`).join('\n')}
-` : ''}
+${
+  fileTypes
+    ? `## Supported File Types
+${fileTypes
+  .split(',')
+  .map((ft) => `- ${ft.trim()}`)
+  .join('\n')}
+`
+    : ''
+}
 
 ## System Integration
 ${integrationList || '- Standard desktop application integrations'}
@@ -68,10 +78,14 @@ ${integrationList || '- Standard desktop application integrations'}
 - High DPI display support
 
 ### File System Operations
-${fileTypes ? `- File operations for ${fileTypes}
+${
+  fileTypes
+    ? `- File operations for ${fileTypes}
 - File association registration
 - Recent files tracking
-- Auto-save functionality` : '- Standard file operations as needed'}
+- Auto-save functionality`
+    : '- Standard file operations as needed'
+}
 
 ### System Integration
 - ${platform === 'cross-platform' ? 'Cross-platform compatible integrations' : `${platformLabel}-specific integrations`}
@@ -86,12 +100,16 @@ ${fileTypes ? `- File operations for ${fileTypes}
 - Smooth UI rendering
 - Background task handling
 
-${framework === 'electron' || framework === 'tauri' ? `### Web Technologies Integration
+${
+  framework === 'electron' || framework === 'tauri'
+    ? `### Web Technologies Integration
 - Modern JavaScript/TypeScript
 - ${framework === 'electron' ? 'Node.js' : 'Rust'} backend integration
 - IPC communication between main and renderer
 - Security best practices for ${framework}
-` : ''}
+`
+    : ''
+}
 
 ### Security
 - Secure data storage

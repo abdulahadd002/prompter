@@ -29,7 +29,7 @@ export default function PromptPreview() {
 
   const handleSave = () => {
     if (isEditing) {
-      const existingItem = state.history.find(h => h.id === state.editingId);
+      const existingItem = state.history.find((h) => h.id === state.editingId);
       dispatch({
         type: 'UPDATE_IN_HISTORY',
         payload: {

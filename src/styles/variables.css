@@ -48,7 +48,7 @@
 
 /* Dark Theme (default) */
 :root,
-[data-theme="dark"] {
+[data-theme='dark'] {
   --color-background: #0f0f23;
   --color-surface: #1a1a2e;
   --color-surface-elevated: #252542;
@@ -78,7 +78,7 @@
 }
 
 /* Light Theme */
-[data-theme="light"] {
+[data-theme='light'] {
   --color-background: #f8fafc;
   --color-surface: #ffffff;
   --color-surface-elevated: #f1f5f9;

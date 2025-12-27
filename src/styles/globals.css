@@ -41,8 +41,13 @@ body::before {
 }
 
 @keyframes backgroundPulse {
-  0%, 100% { opacity: 1; }
-  50% { opacity: 0.7; }
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.7;
+  }
 }
 
 #root {
@@ -52,7 +57,12 @@ body::before {
 }
 
 /* Typography */
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   margin: 0;
   font-weight: 700;
   line-height: 1.2;
@@ -67,11 +77,21 @@ h1 {
   background-clip: text;
 }
 
-h2 { font-size: 2rem; }
-h3 { font-size: 1.5rem; }
-h4 { font-size: 1.25rem; }
-h5 { font-size: 1.125rem; }
-h6 { font-size: 1rem; }
+h2 {
+  font-size: 2rem;
+}
+h3 {
+  font-size: 1.5rem;
+}
+h4 {
+  font-size: 1.25rem;
+}
+h5 {
+  font-size: 1.125rem;
+}
+h6 {
+  font-size: 1rem;
+}
 
 p {
   margin: 0;
@@ -89,7 +109,8 @@ a:hover {
 }
 
 /* Code Blocks */
-code, pre {
+code,
+pre {
   font-family: var(--font-mono);
 }
 
@@ -149,8 +170,12 @@ pre code {
 
 /* Animations */
 @keyframes fadeIn {
-  from { opacity: 0; }
-  to { opacity: 1; }
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }
 
 @keyframes fadeInUp {
@@ -187,7 +212,8 @@ pre code {
 }
 
 @keyframes float {
-  0%, 100% {
+  0%,
+  100% {
     transform: translateY(0);
   }
   50% {
@@ -196,7 +222,8 @@ pre code {
 }
 
 @keyframes pulse {
-  0%, 100% {
+  0%,
+  100% {
     opacity: 1;
   }
   50% {
@@ -243,10 +270,18 @@ pre code {
 }
 
 /* Staggered Animation Delays */
-.stagger-1 { animation-delay: 0.1s; }
-.stagger-2 { animation-delay: 0.2s; }
-.stagger-3 { animation-delay: 0.3s; }
-.stagger-4 { animation-delay: 0.4s; }
+.stagger-1 {
+  animation-delay: 0.1s;
+}
+.stagger-2 {
+  animation-delay: 0.2s;
+}
+.stagger-3 {
+  animation-delay: 0.3s;
+}
+.stagger-4 {
+  animation-delay: 0.4s;
+}
 
 /* Glass Card Effect */
 .glass {
@@ -323,20 +358,20 @@ pre code {
 }
 
 /* Light theme adjustments */
-[data-theme="light"] body::before {
+[data-theme='light'] body::before {
   background:
     radial-gradient(ellipse at 20% 20%, rgba(99, 102, 241, 0.08) 0%, transparent 50%),
     radial-gradient(ellipse at 80% 80%, rgba(240, 147, 251, 0.05) 0%, transparent 50%),
     radial-gradient(ellipse at 40% 60%, rgba(79, 172, 254, 0.04) 0%, transparent 40%);
 }
 
-[data-theme="light"] h1 {
+[data-theme='light'] h1 {
   background: var(--gradient-primary);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
 }
 
-[data-theme="light"] .header {
+[data-theme='light'] .header {
   background: rgba(255, 255, 255, 0.9);
 }

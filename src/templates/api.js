@@ -10,35 +10,46 @@ export const apiTemplate = (data) => {
     features
   } = data;
 
-  const apiTypeLabel = {
-    rest: 'REST API',
-    graphql: 'GraphQL API',
-    grpc: 'gRPC Service'
-  }[apiType] || apiType;
+  const apiTypeLabel =
+    {
+      rest: 'REST API',
+      graphql: 'GraphQL API',
+      grpc: 'gRPC Service'
+    }[apiType] || apiType;
 
-  const languageLabel = {
-    nodejs: 'Node.js (Express/Fastify)',
-    python: 'Python (FastAPI/Django)',
-    go: 'Go',
-    rust: 'Rust',
-    java: 'Java (Spring Boot)',
-    csharp: 'C# (.NET)'
-  }[language] || language;
+  const languageLabel =
+    {
+      nodejs: 'Node.js (Express/Fastify)',
+      python: 'Python (FastAPI/Django)',
+      go: 'Go',
+      rust: 'Rust',
+      java: 'Java (Spring Boot)',
+      csharp: 'C# (.NET)'
+    }[language] || language;
 
-  const databaseLabel = {
-    postgresql: 'PostgreSQL',
-    mysql: 'MySQL',
-    mongodb: 'MongoDB',
-    redis: 'Redis',
-    sqlite: 'SQLite'
-  }[database] || database;
+  const databaseLabel =
+    {
+      postgresql: 'PostgreSQL',
+      mysql: 'MySQL',
+      mongodb: 'MongoDB',
+      redis: 'Redis',
+      sqlite: 'SQLite'
+    }[database] || database;
 
   const endpointsList = endpoints
-    ? endpoints.split('\n').filter(e => e.trim()).map(e => `- ${e.trim()}`).join('\n')
+    ? endpoints
+        .split('\n')
+        .filter((e) => e.trim())
+        .map((e) => `- ${e.trim()}`)
+        .join('\n')
     : '';
 
   const featuresList = features
-    ? features.split('\n').filter(f => f.trim()).map(f => `- ${f.trim()}`).join('\n')
+    ? features
+        .split('\n')
+        .filter((f) => f.trim())
+        .map((f) => `- ${f.trim()}`)
+        .join('\n')
     : '';
 
   return `# API / Backend Development Prompt
@@ -68,35 +79,55 @@ ${featuresList || '- Standard API features'}
 - Configuration management for different environments
 
 ### ${apiType === 'rest' ? 'REST API Design' : apiType === 'graphql' ? 'GraphQL Schema Design' : 'gRPC Service Design'}
-${apiType === 'rest' ? `- RESTful resource naming conventions
+${
+  apiType === 'rest'
+    ? `- RESTful resource naming conventions
 - Proper HTTP methods (GET, POST, PUT, PATCH, DELETE)
 - Consistent response format
 - Pagination for list endpoints
-- Filtering and sorting capabilities` : ''}
-${apiType === 'graphql' ? `- Well-structured schema with types and resolvers
+- Filtering and sorting capabilities`
+    : ''
+}
+${
+  apiType === 'graphql'
+    ? `- Well-structured schema with types and resolvers
 - Efficient query resolution
 - Mutation handling
 - Subscription support if needed
-- N+1 query prevention` : ''}
-${apiType === 'grpc' ? `- Protocol buffer definitions
+- N+1 query prevention`
+    : ''
+}
+${
+  apiType === 'grpc'
+    ? `- Protocol buffer definitions
 - Service method implementations
 - Streaming support where needed
-- Error handling with proper status codes` : ''}
+- Error handling with proper status codes`
+    : ''
+}
 
-${authentication ? `### Authentication & Authorization
+${
+  authentication
+    ? `### Authentication & Authorization
 - ${authentication} implementation
 - Secure token handling
 - Role-based access control
 - Session/token expiration handling
-` : ''}
+`
+    : ''
+}
 
-${database ? `### Database
+${
+  database
+    ? `### Database
 - ${databaseLabel} connection and pooling
 - Migrations for schema changes
 - Query optimization
 - Data validation at database level
 - Backup and recovery considerations
-` : ''}
+`
+    : ''
+}
 
 ### Security
 - Input validation and sanitization

@@ -11,36 +11,47 @@ export const webAppTemplate = (data) => {
     database
   } = data;
 
-  const appTypeLabel = {
-    spa: 'Single Page Application (SPA)',
-    ssr: 'Server-Side Rendered Application',
-    static: 'Static Site',
-    fullstack: 'Full-Stack Application'
-  }[appType] || appType;
+  const appTypeLabel =
+    {
+      spa: 'Single Page Application (SPA)',
+      ssr: 'Server-Side Rendered Application',
+      static: 'Static Site',
+      fullstack: 'Full-Stack Application'
+    }[appType] || appType;
 
-  const frameworkLabel = {
-    react: 'React',
-    vue: 'Vue.js',
-    angular: 'Angular',
-    nextjs: 'Next.js',
-    nuxt: 'Nuxt.js',
-    svelte: 'Svelte/SvelteKit'
-  }[framework] || framework;
+  const frameworkLabel =
+    {
+      react: 'React',
+      vue: 'Vue.js',
+      angular: 'Angular',
+      nextjs: 'Next.js',
+      nuxt: 'Nuxt.js',
+      svelte: 'Svelte/SvelteKit'
+    }[framework] || framework;
 
-  const stylingLabel = {
-    tailwind: 'Tailwind CSS',
-    'css-modules': 'CSS Modules',
-    'styled-components': 'Styled Components',
-    sass: 'Sass/SCSS',
-    vanilla: 'Vanilla CSS'
-  }[styling] || styling;
+  const stylingLabel =
+    {
+      tailwind: 'Tailwind CSS',
+      'css-modules': 'CSS Modules',
+      'styled-components': 'Styled Components',
+      sass: 'Sass/SCSS',
+      vanilla: 'Vanilla CSS'
+    }[styling] || styling;
 
   const featuresList = features
-    ? features.split('\n').filter(f => f.trim()).map(f => `- ${f.trim()}`).join('\n')
+    ? features
+        .split('\n')
+        .filter((f) => f.trim())
+        .map((f) => `- ${f.trim()}`)
+        .join('\n')
     : '';
 
   const pagesList = pages
-    ? pages.split('\n').filter(p => p.trim()).map(p => `- ${p.trim()}`).join('\n')
+    ? pages
+        .split('\n')
+        .filter((p) => p.trim())
+        .map((p) => `- ${p.trim()}`)
+        .join('\n')
     : '';
 
   return `# Web Application Development Prompt
@@ -77,20 +88,28 @@ ${pagesList || '- Home page\n- Additional pages to be defined'}
 - Touch-friendly interactive elements
 - Proper viewport handling
 
-${authentication ? `### Authentication
+${
+  authentication
+    ? `### Authentication
 - Secure user authentication flow
 - Login/Register pages
 - Password reset functionality
 - Session management
 - Protected routes
-` : ''}
+`
+    : ''
+}
 
-${database ? `### Database & API
+${
+  database
+    ? `### Database & API
 - ${database} database integration
 - RESTful API or GraphQL endpoints
 - Data validation
 - Error handling
-` : ''}
+`
+    : ''
+}
 
 ### Performance
 - Code splitting and lazy loading

@@ -4,23 +4,26 @@ export function useClipboard(resetDelay = 2000) {
   const [copied, setCopied] = useState(false);
   const [error, setError] = useState(null);
 
-  const copyToClipboard = useCallback(async (text) => {
-    try {
-      await navigator.clipboard.writeText(text);
-      setCopied(true);
-      setError(null);
+  const copyToClipboard = useCallback(
+    async (text) => {
+      try {
+        await navigator.clipboard.writeText(text);
+        setCopied(true);
+        setError(null);
 
-      setTimeout(() => {
+        setTimeout(() => {
+          setCopied(false);
+        }, resetDelay);
+
+        return true;
+      } catch (err) {
+        setError(err);
         setCopied(false);
-      }, resetDelay);
-
-      return true;
-    } catch (err) {
-      setError(err);
-      setCopied(false);
-      return false;
-    }
-  }, [resetDelay]);
+        return false;
+      }
+    },
+    [resetDelay]
+  );
 
   return {
     copied,

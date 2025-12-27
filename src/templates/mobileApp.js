@@ -1,29 +1,28 @@
 export const mobileAppTemplate = (data) => {
-  const {
-    projectName,
-    platform,
-    framework,
-    description,
-    features,
-    targetAudience,
-    designStyle
-  } = data;
+  const { projectName, platform, framework, description, features, targetAudience, designStyle } =
+    data;
 
-  const platformLabel = {
-    ios: 'iOS',
-    android: 'Android',
-    both: 'iOS and Android'
-  }[platform] || platform;
+  const platformLabel =
+    {
+      ios: 'iOS',
+      android: 'Android',
+      both: 'iOS and Android'
+    }[platform] || platform;
 
-  const frameworkLabel = {
-    'react-native': 'React Native',
-    flutter: 'Flutter',
-    swift: 'Swift (Native iOS)',
-    kotlin: 'Kotlin (Native Android)'
-  }[framework] || framework;
+  const frameworkLabel =
+    {
+      'react-native': 'React Native',
+      flutter: 'Flutter',
+      swift: 'Swift (Native iOS)',
+      kotlin: 'Kotlin (Native Android)'
+    }[framework] || framework;
 
   const featuresList = features
-    ? features.split('\n').filter(f => f.trim()).map(f => `- ${f.trim()}`).join('\n')
+    ? features
+        .split('\n')
+        .filter((f) => f.trim())
+        .map((f) => `- ${f.trim()}`)
+        .join('\n')
     : '';
 
   return `# Mobile App Development Prompt

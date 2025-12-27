@@ -55,7 +55,7 @@ function promptReducer(state, action) {
     }
 
     case 'UPDATE_IN_HISTORY': {
-      const newHistory = state.history.map(item =>
+      const newHistory = state.history.map((item) =>
         item.id === action.payload.id
           ? { ...action.payload, updatedAt: new Date().toISOString() }
           : item
@@ -69,7 +69,7 @@ function promptReducer(state, action) {
     }
 
     case 'DELETE_FROM_HISTORY': {
-      const newHistory = state.history.filter(item => item.id !== action.payload);
+      const newHistory = state.history.filter((item) => item.id !== action.payload);
       saveHistoryToStorage(newHistory);
       return {
         ...state,
@@ -78,7 +78,7 @@ function promptReducer(state, action) {
     }
 
     case 'EDIT_PROMPT': {
-      const item = state.history.find(h => h.id === action.payload);
+      const item = state.history.find((h) => h.id === action.payload);
       if (!item) return state;
       return {
         ...state,
@@ -130,11 +130,7 @@ export function PromptProvider({ children }) {
     dispatch({ type: 'LOAD_HISTORY', payload: history });
   }, []);
 
-  return (
-    <PromptContext.Provider value={{ state, dispatch }}>
-      {children}
-    </PromptContext.Provider>
-  );
+  return <PromptContext.Provider value={{ state, dispatch }}>{children}</PromptContext.Provider>;
 }
 
 PromptProvider.propTypes = {

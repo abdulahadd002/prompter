@@ -71,9 +71,7 @@ export default function PromptHistory() {
             </span>
           </div>
           <h4 className="history-name">{item.formData.projectName || 'Untitled'}</h4>
-          <div className="history-preview">
-            {item.prompt.substring(0, 150)}...
-          </div>
+          <div className="history-preview">{item.prompt.substring(0, 150)}...</div>
           <div className="history-actions">
             <Button
               variant="outline"

@@ -53,13 +53,10 @@ const validationRules = {
 };
 
 export default function WebAppForm({ onSubmit }) {
-  const {
-    values,
-    errors,
-    handleChange,
-    handleBlur,
-    validateAll
-  } = useFormValidation(initialValues, validationRules);
+  const { values, errors, handleChange, handleBlur, validateAll } = useFormValidation(
+    initialValues,
+    validationRules
+  );
 
   const handleSubmit = (e) => {
     e.preventDefault();

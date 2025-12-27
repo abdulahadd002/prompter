@@ -2,19 +2,15 @@ import { useEffect, useCallback } from 'react';
 import PropTypes from 'prop-types';
 import './Modal.css';
 
-export default function Modal({
-  isOpen,
-  onClose,
-  title,
-  children,
-  footer,
-  size = 'medium'
-}) {
-  const handleKeyDown = useCallback((e) => {
-    if (e.key === 'Escape') {
-      onClose();
-    }
-  }, [onClose]);
+export default function Modal({ isOpen, onClose, title, children, footer, size = 'medium' }) {
+  const handleKeyDown = useCallback(
+    (e) => {
+      if (e.key === 'Escape') {
+        onClose();
+      }
+    },
+    [onClose]
+  );
 
   useEffect(() => {
     if (isOpen) {
@@ -39,28 +35,17 @@ export default function Modal({
       aria-modal="true"
       aria-labelledby="modal-title"
     >
-      <div
-        className={`modal modal-${size}`}
-        onClick={(e) => e.stopPropagation()}
-      >
+      <div className={`modal modal-${size}`} onClick={(e) => e.stopPropagation()}>
         <div className="modal-header">
-          <h2 id="modal-title" className="modal-title">{title}</h2>
-          <button
-            className="modal-close"
-            onClick={onClose}
-            aria-label="Close modal"
-          >
+          <h2 id="modal-title" className="modal-title">
+            {title}
+          </h2>
+          <button className="modal-close" onClick={onClose} aria-label="Close modal">
             &times;
           </button>
         </div>
-        <div className="modal-body">
-          {children}
-        </div>
-        {footer && (
-          <div className="modal-footer">
-            {footer}
-          </div>
-        )}
+        <div className="modal-body">{children}</div>
+        {footer && <div className="modal-footer">{footer}</div>}
       </div>
     </div>
   );

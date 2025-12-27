@@ -22,7 +22,11 @@ export default function Select({
       {label && (
         <label htmlFor={selectId} className="select-label">
           {label}
-          {required && <span className="select-required" aria-hidden="true">*</span>}
+          {required && (
+            <span className="select-required" aria-hidden="true">
+              *
+            </span>
+          )}
         </label>
       )}
       <select
@@ -46,7 +50,11 @@ export default function Select({
           </option>
         ))}
       </select>
-      {error && <span id={`${selectId}-error`} className="select-error-message" role="alert">{error}</span>}
+      {error && (
+        <span id={`${selectId}-error`} className="select-error-message" role="alert">
+          {error}
+        </span>
+      )}
     </div>
   );
 }
