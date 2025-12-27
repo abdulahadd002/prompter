@@ -1,5 +1,6 @@
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { Button, Card } from '../components/common';
+import { usePrompt } from '../context/PromptContext';
 import './Home.css';
 
 const FEATURES = [
@@ -30,13 +31,21 @@ const FEATURES = [
 ];
 
 const PROJECT_TYPES = [
-  { icon: '📱', label: 'Mobile Apps', delay: 0 },
-  { icon: '🌐', label: 'Web Apps', delay: 0.1 },
-  { icon: '⚡', label: 'APIs & Backends', delay: 0.2 },
-  { icon: '💻', label: 'Desktop Apps', delay: 0.3 }
+  { id: 'mobile', icon: '📱', label: 'Mobile Apps', delay: 0 },
+  { id: 'web', icon: '🌐', label: 'Web Apps', delay: 0.1 },
+  { id: 'api', icon: '⚡', label: 'APIs & Backends', delay: 0.2 },
+  { id: 'desktop', icon: '💻', label: 'Desktop Apps', delay: 0.3 }
 ];
 
 export default function Home() {
+  const { dispatch } = usePrompt();
+  const navigate = useNavigate();
+
+  const handleProjectTypeClick = (typeId) => {
+    dispatch({ type: 'SET_PROJECT_TYPE', payload: typeId });
+    navigate('/builder');
+  };
+
   return (
     <div className="home">
       {/* Animated background elements */}
@@ -101,15 +110,17 @@ export default function Home() {
           <span className="section-title-text">Supported Project Types</span>
         </h2>
         <div className="types-list">
-          {PROJECT_TYPES.map((type, index) => (
-            <div
-              key={index}
+          {PROJECT_TYPES.map((type) => (
+            <button
+              key={type.id}
               className="type-item"
               style={{ animationDelay: `${type.delay}s` }}
+              onClick={() => handleProjectTypeClick(type.id)}
+              aria-label={`Create ${type.label} prompt`}
             >
               <span className="type-icon">{type.icon}</span>
               <span className="type-label">{type.label}</span>
-            </div>
+            </button>
           ))}
         </div>
       </section>
